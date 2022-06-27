@@ -21,7 +21,6 @@ namespace LoadFromFile
             path = Path.Combine(path, "persons.txt");
             Fnames = Path.Combine(Fnames, "FirstNames.txt");
             Lnames = Path.Combine(Lnames, "LastNames.txt");
-
         }
         public void Create(Person person)
         {
