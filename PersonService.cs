@@ -11,15 +11,16 @@ namespace LoadFromFile
     public class PersonService
     {
         private readonly string path = @"persons";
-        private readonly string Fnames;
-        private readonly string Lnames;
+        private readonly string Fnames= @"persons";
+        private readonly string Lnames = @"persons";
         public PersonService()
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
+            
             path = Path.Combine(path, "persons.txt");
-            Fnames = Path.Combine(path, "FirstNames.txt");
-            Lnames = Path.Combine(path, "LastNames");
+            Fnames = Path.Combine(Fnames, "FirstNames.txt");
+            Lnames = Path.Combine(Lnames, "LastNames.txt");
 
         }
         public void Create(Person person)
@@ -52,6 +53,19 @@ namespace LoadFromFile
             persons=File.ReadAllLines(path);
             return persons;
         }
+        public string[] NamesGen()
+        {
+            string[] persons;
+            persons = File.ReadAllLines(Fnames);
+            return persons;
+        }
+        public string[] LastNamesGen()
+        {
+            string[] persons;
+            persons = File.ReadAllLines(Lnames);
+            return persons;
+        }
+
         public void Print(List<Person> people)
         {
             foreach (var person in people)
