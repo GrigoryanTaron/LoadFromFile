@@ -11,13 +11,13 @@ namespace LoadFromFile
     public class PersonService
     {
         private readonly string path = @"persons";
-        private readonly string Fnames= @"persons";
+        private readonly string Fnames = @"persons";
         private readonly string Lnames = @"persons";
         public PersonService()
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            
+
             path = Path.Combine(path, "persons.txt");
             Fnames = Path.Combine(Fnames, "FirstNames.txt");
             Lnames = Path.Combine(Lnames, "LastNames.txt");
@@ -35,14 +35,14 @@ namespace LoadFromFile
         public List<Person> ConvertToPerson(string[] persons)
         {
             List<Person> people = new List<Person>();
-            for (int i = 0; i < persons.Length; i=i+4)
+            for (int i = 0; i < persons.Length; i = i + 4)
             {
                 people.Add(new Person()
                 {
                     Id = Guid.Parse(persons[i]),
-                    Age = Convert.ToInt16(persons[i+3]),
-                    LastName = persons[i+2],
-                    FirstName = persons[i+1]
+                    Age = Convert.ToInt16(persons[i + 3]),
+                    LastName = persons[i + 2],
+                    FirstName = persons[i + 1]
                 });
             }
             return people;
@@ -50,7 +50,7 @@ namespace LoadFromFile
         public string[] Read()
         {
             string[] persons;
-            persons=File.ReadAllLines(path);
+            persons = File.ReadAllLines(path);
             return persons;
         }
         public string[] NamesGen()
